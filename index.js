@@ -1,6 +1,6 @@
 'use strict';
 
-const yelp = require('yelp-fusion');
+const yelp = require('yelp');
 
 const apiKey = '--vBS8be65vVEbTkD-KZ0z2aV8-hwnq6rhaQT7px02g3MprkD6ZXytF94vuJBh2cVoLTTJUuggz87dlDh0WOjG2dvCNG7rHg9svsLbso7D7_ZMNh0Xw6Rrbq6W2gWnYx'
 
