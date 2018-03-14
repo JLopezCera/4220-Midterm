@@ -5,13 +5,17 @@ const
 
 const business = (id) => {
   yelp.business(id)
-        .then(result => {
-            console.log(result)
-        })
-        .catch(err => console.error(err))
 }
 
-business("gary-danko-san-francisco");
+const search = (location) =>{
+    let query = `?location=${location}`
+
+    yelp.search(query)
+}
+
+
+// search('boulder')
+business('bestia-los-angeles')
 
 module.exports = {
     business
