@@ -1,14 +1,15 @@
 {
-  "name": "yelp",
+  "name": "yelp-app",
   "version": "1.0.0",
-  "description": "\"calls yelp api\"",
-  "main": "index.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "superagent": "^3.8.2"
+    "inquirer": "^5.1.0",
+    "yargs": "^11.0.0"
   }
 }
