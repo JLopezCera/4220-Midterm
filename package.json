@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/bboayes7/4220-Midterm/issues"
   },
-  "homepage": "https://github.com/bboayes7/4220-Midterm#readme"
+  "homepage": "https://github.com/bboayes7/4220-Midterm#readme",
+  "dependencies": {
+    "inquirer": "^5.1.0"
+  }
 }
