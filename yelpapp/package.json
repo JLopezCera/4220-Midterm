@@ -1,0 +1,19 @@
+{
+  "name": "yelpapp",
+  "version": "1.0.0",
+  "description": "Using yelp calls",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "yelp": "file:../yelp",
+    "inquirer": "^5.1.0",
+    "package-lock.json": "^1.0.0",
+    "package.json": "^2.0.1",
+    "superagent": "^3.8.2",
+    "yargs": "^11.0.0"
+  }
+}
