@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "inquirer": "^5.1.0",
-    "request": "^2.85.0",
-    "superagent": "3.8.0"
+    "request": "^2.85.0"
   }
 }
