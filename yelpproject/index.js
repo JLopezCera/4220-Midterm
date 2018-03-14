@@ -1,37 +1,18 @@
 const
     config = require('./config'),
-    request = require('request')
+    superagent = require('superagent')
 
 
-let options = {
-    url: `${config.url}`,
-    headers: {
-        'Authorization': `Bearer ${config.apiKey}`
-    }
-}
+
 
 const _fetch = (command) => {
+    console.log(config.url + command);
 
-    options.url += `${command}`
-
-    return request(options, (error, response, body) =>{
-        let restaurant = JSON.parse(body);
-        console.log(restaurant.name);
-        console.log(restaurant.location.address1)
-        console.log(restaurant.display_phone)
-        console.log(restaurant.price)
-        console.log(restaurant.rating)
-    })
+    return superagent.get(`${config.url}${command}`)
+    .set({'Authorization': `Bearer ${config.apiKey}`})
+    .then(response => response.body)
+        .catch(error => error.response.body)
 }
-
-// const _fetch = (command) => {
-//     console.log(config.url + command);
-
-//     return superagent.get(`${config.url}/${command}`)
-//     .set({'Authorization': `Bearer ${config.apiKey}`})
-//     .then(response => response.body)
-//         .catch(error => error.response.body)
-// }
 
 exports.search = (parameters) => {
     return _fetch(`businesses/search${parameters}`)
