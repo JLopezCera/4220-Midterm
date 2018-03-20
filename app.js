@@ -52,7 +52,7 @@ const transactionSearch = (parameters) => {
 
 
 //add address shows business that deliver
-exports.transactionSearch = (transactionType, parameters) => {
+exports.transactionSearch = (parameters) => {
     return _fetch(`transactions/delivery/search?location=${parameters}`)
 
 }
