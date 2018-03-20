@@ -1,6 +1,6 @@
 
-const search = (location) =>{
-    yelp.search(location)
+const searchR = (term,location) =>{
+    yelp.searchRating(term,location)
     .then(result =>{
         return inquirer.prompt([{
             type: 'list',
@@ -14,7 +14,6 @@ const search = (location) =>{
         }])
     }).then(response =>{
         reviews(response.place)
-
     })
     .catch(err => console.log(err))
 
@@ -36,8 +35,8 @@ const businessMatched = (matchType, parameters, name, state, city, county) => {
     })
 }
 
-const transactionSearch = (transactionType , parameters) => {
-    yelp.transactionSearch(transactionType , parameters)
+const transactionSearch = (parameters) => {
+    yelp.transactionSearch(parameters)
         .then(result => {
             return inquirer.prompt([{
                 type: list,
@@ -54,7 +53,7 @@ const transactionSearch = (transactionType , parameters) => {
 
 //add address shows business that deliver
 exports.transactionSearch = (transactionType, parameters) => {
-    return _fetch(`transactions/${transactionType}/search?location=${parameters}`)
+    return _fetch(`transactions/delivery/search?location=${parameters}`)
 
 }
 
@@ -63,6 +62,6 @@ exports.businessMatch = (matchType, parameters, name, state, city, county) => {
 
 }
 
-exports.search = (term,location) => {
+exports.searchRating = (term,location) => {
     return _fetch(`businesses/search?term=${term}&location=${location}&limit=5&sort_by=rating`)
 }
