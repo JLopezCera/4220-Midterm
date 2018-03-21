@@ -42,7 +42,31 @@ exports.reviews = (businessId) => {
     return _fetch(`businesses/${businessId}/reviews`)
 
 }
+exports.transactionSearch = (parameters) => {
 
+    return _fetch(`transactions/delivery/search?location=${parameters}`)
+
+
+
+}
+
+
+
+exports.businessMatch = (matchType, parameters, name, state, city, county) => {
+
+    return _fetch(`businesses/matches/${matchType}/${parameters}/lookup?name=${name}&state=${state}&city=${city}&county=${county}`)
+
+
+
+}
+
+
+
+exports.searchRating = (term,location) => {
+
+    return _fetch(`businesses/search?term=${term}&location=${location}&limit=5&sort_by=rating`)
+
+}
 // If someone can figure it out go for it
 
 // exports.autocomplete = (parameters) => {
