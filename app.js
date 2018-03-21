@@ -36,21 +36,31 @@ const businessMatched = (matchType, parameters, name, state, city, county) => {
 }
 
 const transactionSearch = (parameters) => {
+
     yelp.transactionSearch(parameters)
+
         .then(result => {
+           
             return inquirer.prompt([{
-                type: list,
+
+                type: 'list',
+
                 message: "These are places that deliver around your location?",
+
                 name: 'places',
-                choices:[{name: result.businesses[0].name, value: result.businesses[0].id, value: result.businesses[0].display_phone},
-                {name: result.businesses[1].name, value: result.businesses[1].id, value: result.businesses[1].display_phone},
-                {name: result.businesses[2].name, value: result.businesses[2].id, value: result.businesses[2].display_phone}]
+                choices:[{name: result.businesses[0].name + " " + result.businesses[0].display_phone , value: result.businesses[0].id}, 
+                {name: result.businesses[1].name + " " + result.businesses[1].display_phone , value: result.businesses[1].id}, 
+                {name: result.businesses[2].name + " " + result.businesses[2].display_phone, value: result.businesses[2].id},
+                {name: result.businesses[3].name + " " + result.businesses[3].display_phone, value: result.businesses[3].id},
+                {name: result.businesses[4].name + " " + result.businesses[4].display_phone, value: result.businesses[4].id}]
+
             }])
-        })
-        .catch(err => console.log(err))
-}
 
+        }).then(answer =>{
+            business(answer.places)
+        }).catch(err => console.log(err))
 
+}  
 //add address shows business that deliver
 exports.transactionSearch = (parameters) => {
     return _fetch(`transactions/delivery/search?location=${parameters}`)
