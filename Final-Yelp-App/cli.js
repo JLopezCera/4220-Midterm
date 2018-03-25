@@ -1,0 +1,72 @@
+const
+    app = require('./app'), // yelp app
+    yargs = require('yargs') //use yargs
+
+//flags
+const flags = yargs.usage('$0: Usage <cmd> [options]')
+    //BusinessSearch Command
+    //needs a term(-t) and location(-l)
+    .command({
+        command: 'BusinessSearch',
+        desc: 'Searches yelp for whatever you like by keyword',
+        builder: (yargs) => {
+            return yargs.option('term', {
+                alias: 't',
+                describe: 'Type of place or name of place we are looking for'
+            }).option('location', {
+                alias: 'l',
+                describe: 'City we are looking in'
+            })
+        },
+        //call in BusinessSearch
+        handler: (argv) => { app.BusinessSearch(argv.term, argv.location) }
+    })
+
+    //SearchByPhoneNumber Command
+    //needs a phone(-p)
+    .command({
+        command: 'SearchByPhoneNumber',
+        desc: 'Searches for an establishment with the phone number provided',
+        builder: (yargs) => {
+            return yargs.option('phone', {
+                alias: 'p',
+                describe: 'Number we are using to search'
+            })
+        },
+        //call in phone
+        handler: (argv) => { app.phone(argv.Phone) },
+    })
+    //BusinessID Command
+    //needs a name(-n) and location(-l)
+    .command({
+        command: 'BusinessID',
+        desc: 'Searches for an establishment with the ID provided',
+        builder: (yargs) => {
+            return yargs.option('name', {
+                alias: 'n',
+                describe: 'Name Of Business'
+            }).option('location', {
+                alias: 'l',
+                describe: 'City we are looking in'
+            })
+        }, 
+        //call in businessid
+        handler: (argv) => { app.business(argv.name,argv.location) },
+    })
+    //IDC command
+    //needs a location(-l)
+    .command({
+        command: 'IDC',
+        desc: "For when your significant other says they want to eat anywhere",
+        builder: (yargs) => {
+            return yargs.option('location', {
+                alias: 'l',
+                describe: "Take me somewhere nice"
+            })
+        },
+        //call in idc
+        handler: (argv) => app.pro(argv.location),
+    })
+    //help command
+    .help('help')
+    .argv
