@@ -8,7 +8,7 @@ const flags = yargs.usage('$0: Usage <cmd> [options]')
     //needs a term(-t) and location(-l)
     .command({
         command: 'BusinessSearch',
-        desc: 'Searches yelp for whatever you like by keyword \n (ex. BusinessSearch -t "Restaurant" -l "Los Angeles")\n',
+        desc: 'Searches yelp for whatever you like by keyword and location\n (ex. BusinessSearch -t "Restaurant" -l "Los Angeles")\n',
         builder: (yargs) => {
             return yargs.option('term', {
                 alias: 't',
