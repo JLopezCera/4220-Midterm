@@ -44,7 +44,6 @@ exports.somewhereNice = (location) => {
 //Find Business With A Given Phone Number
 exports.phoneSearch = (phone) => {
     return _fetch(`businesses/search/phone?phone=+1${phone}`)
-
 }
 
 //Find Restaurants that Deliver

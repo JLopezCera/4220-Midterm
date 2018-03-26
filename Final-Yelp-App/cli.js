@@ -8,7 +8,7 @@ const flags = yargs.usage('$0: Usage <cmd> [options]')
     //needs a term(-t) and location(-l)
     .command({
         command: 'BusinessSearch',
-        desc: 'Searches yelp for whatever you like by keyword',
+        desc: 'Searches yelp for whatever you like by keyword \n (ex. BusinessSearch -t "Restaurant" -l "Los Angeles")\n',
         builder: (yargs) => {
             return yargs.option('term', {
                 alias: 't',
@@ -26,7 +26,7 @@ const flags = yargs.usage('$0: Usage <cmd> [options]')
     //needs a phone(-p)
     .command({
         command: 'SearchByPhoneNumber',
-        desc: 'Searches for an establishment with the phone number provided',
+        desc: 'Searches for an establishment with the phone number provided\n (ex. SearchByPhoneNumber -p 6264575234)\n',
         builder: (yargs) => {
             return yargs.option('phone', {
                 alias: 'p',
@@ -34,13 +34,13 @@ const flags = yargs.usage('$0: Usage <cmd> [options]')
             })
         },
         //call in phone
-        handler: (argv) => { app.phone(argv.Phone) },
+        handler: (argv) => { app.phone(argv.phone) },
     })
     //BusinessID Command
     //needs a name(-n) and location(-l)
     .command({
         command: 'BusinessID',
-        desc: 'Searches for an establishment with the ID provided',
+        desc: 'Searches for an establishment with the ID provided \n (ex. BusinessID -n "Bestia" -l "Los Angeles")\n',
         builder: (yargs) => {
             return yargs.option('name', {
                 alias: 'n',
@@ -57,7 +57,7 @@ const flags = yargs.usage('$0: Usage <cmd> [options]')
     //needs a location(-l)
     .command({
         command: 'IDC',
-        desc: "For when your significant other says they want to eat anywhere",
+        desc: 'For when your significant other says they want to eat anywhere \n (ex. IDC -l "Los Angeles")\n',
         builder: (yargs) => {
             return yargs.option('location', {
                 alias: 'l',

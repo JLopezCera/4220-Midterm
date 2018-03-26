@@ -227,7 +227,7 @@ const searchByRating = (term, location) => {
             for (x in result.businesses) {
                 let business = {}
                 business.name = result.businesses[x].name + " Rating " + result.businesses[x].rating,
-                    business.value = result.businesses[x].id
+                business.value = result.businesses[x].id
                 businesses.unshift(business);
                 if (x == 4) {
                     break;
@@ -292,8 +292,11 @@ const phone = (phone) => {
     yelp.phoneSearch(phone)
         .then(result => {
             //return the first business in the result
-            console.log(result)
-            oldBusiness(result.businesses[0].id)
+            if(result.businesses.length == 0){
+                console.log("Business Not Found")
+            } else {
+                oldBusiness(result.businesses[0].id)
+            }
         })
         .catch(err => console.error(err))
 }
@@ -308,7 +311,7 @@ const business = (term, location) => {
     yelp.business(id)
         .then(result => {
             //Get today's Date
-            var n = day.getDay();
+            let n = day.getDay();
             //name of the business
             console.log("\nName:\t\t" + result.name)
             //address of the business
@@ -346,7 +349,7 @@ const business = (term, location) => {
 const oldBusiness = (id) => {
     yelp.business(id)
         .then(result => {
-            var n = day.getDay();
+            let n = day.getDay();
             console.log("\nName:\t\t" + result.name)
             console.log("\nAddress:\t" + result.location.address1)
             console.log("\t\t" + result.location.city + ", " + result.location.state + ", " + result.location.country + " " + result.location.zip_code + "\n")
